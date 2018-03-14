@@ -25,24 +25,26 @@ class App extends Component {
 	render() {
 		const { imageUrl } = this.state;
 		console.log(imageUrl);
-		// if (imageUrl) {
-		// 	fetch('http://localhost:3000/imageurl', {
-		// 		method: 'post',
-		// 		headers: {'Content-Type': 'application/json'},
-		// 		body: JSON.stringify({
-		// 			imageUrl: imageUrl
-		// 		})
-		// 	})
-		// 	.then(console.log)
-
-		// 	.then(response => response.json())
-		// }
+		if (imageUrl) {
+			fetch('http://localhost:3000/imageurl', {
+				method: 'post',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({
+					imageUrl: imageUrl
+				})
+			})
+			.then(response => response.json())
+			.then(console.log)
+			.catch(err => {
+				console.log(err);
+			})
+		}
 
 		return (
 		  <div className="App">
 		  	<Logo />
 		  	<ImageLink onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>
-		  	<ImageRecognition imageUrl={`https://www.brainscape.com/blog/wp-content/uploads/2011/08/hanzi_xingyunliushui-006.jpg`}/>
+		  	<ImageRecognition imageUrl={imageUrl}/>
 		  </div>
 		);
 	}
