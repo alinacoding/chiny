@@ -2,6 +2,7 @@ const request = require('request');
 const fs = require('fs');
 const path = require('path');
 const tesseract = require('tesseract.js')
+const translate = require('google-translate-api');
 
 
 const handleImageUrl = (req, res) => {
@@ -24,6 +25,14 @@ const handleImageUrl = (req, res) => {
                 })
                 .then(function(result) {
                   console.log(result.text);
+                  translate(result.text, {to: 'en'})
+                    .then(rez => {
+                      console.log(rez.text);
+                      console.log(rez.from.language.iso);
+                      })
+                    .catch(err => {
+                      console.error(err);
+                  })
                   res.json(result.text);
                 })
                 .catch(err => {
@@ -33,16 +42,12 @@ const handleImageUrl = (req, res) => {
           .on('error', function(err) {
             console.log(err)
           })
-
     });
   } else {
-        res.status(400).send('Did not receive url');
-
+      res.status(400).send('Did not receive url');
   }  
 }
 
 module.exports = {
-
 	handleImageUrl
-
 } 

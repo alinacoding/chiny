@@ -12,13 +12,18 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
+    "cors-prefetch-middleware": "^1.0.0",
     "express": "^4.16.3",
     "fs": "0.0.1-security",
+    "google-translate-api": "^2.3.0",
+    "images-upload-middleware": "^1.1.1",
     "path": "^0.12.7",
     "request": "^2.85.0",
     "tesseract.js": "^1.0.10"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "nodemon": "^1.17.2"
   }
 }
