@@ -5,6 +5,7 @@
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-images-uploader": "^1.1.0",
     "react-progress-button": "^5.1.0",
     "react-scripts": "1.1.1",
     "react-tilt": "^0.1.4",
@@ -16,9 +17,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "devDependencies": {
-    "react-images-uploader": "^1.1.0"
-  },
+  "devDependencies": {},
   "main": "index.js",
   "author": "",
   "license": "ISC",

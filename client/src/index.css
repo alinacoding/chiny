@@ -2,6 +2,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Poiret One', cursive;
-	background: url('https://images.unsplash.com/photo-1506158669146-619067262a00?ixlib=rb-0.3.5&s=b7c3192ab675c821bdd82c9b65c49851&auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+	background: 
+	url('https://images.unsplash.com/photo-1506158669146-619067262a00?ixlib=rb-0.3.5&s=b7c3192ab675c821bdd82c9b65c49851&auto=format&fit=crop&w=1350&q=80') no-repeat;
 	background-size: cover;
 }

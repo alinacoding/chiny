@@ -15,7 +15,6 @@ class App extends Component {
 		this.state = {
 			input: '',
 			imageUrl: '',
-			uploadedImage: ''
 		}
 	}
 
@@ -50,18 +49,17 @@ class App extends Component {
 		  	<Logo />
 		  	<ImageLink onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>
 		  	<ImageRecognition imageUrl={imageUrl}/>
-            <ImagesUploader
-                url="http://localhost:3000/uploadedimage"
-                optimisticPreviews
-                multiple={false}
-                onLoadEnd={(err) => {
-                    if (err) {
-                        console.error(err);
-                    }
-                }}
-                label="Upload a picture"
-                />
-
+			<ImagesUploader
+				url="http://localhost:3000/uploadedimage"
+				optimisticPreviews
+				multiple={false}
+				onLoadEnd={(err) => {
+					if (err) {
+						console.log(err);
+					}
+				}}
+				label="Upload a picture"
+			/>
 		  </div>
 		);
 	}

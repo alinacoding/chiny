@@ -4,7 +4,7 @@ const ImageRecognition = ({ imageUrl }) => {
   return (
     <div className='center ma'>
       <div className='absolute mt2'>
-        <img id='inputimage' alt='' src={imageUrl} width='500px' heigh='auto'/>
+        <img id='inputimage' alt='' src={imageUrl} width='500px' height='auto'/>
       </div>   
     </div>
   );
