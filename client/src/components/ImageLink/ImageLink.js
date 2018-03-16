@@ -13,7 +13,11 @@ const ImageLink = ({ onInputChange, onButtonSubmit }) => {
           className='f4 pa2 w-70 center' 
           type='text' 
           onChange={onInputChange}/>
-          <button className='w-30 grow f4 link ph3 pv2 white bg-light-red'>Submit</button>
+          <button 
+            className='w-30 grow f4 link ph3 pv2 white bg-light-red'
+            onClick={onButtonSubmit}>
+            {'Submit'}
+          </button>
         </div>
 
       </div>

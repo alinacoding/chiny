@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import ImagesUploader from 'react-images-uploader';
+
 import 'react-images-uploader/font.css';
 import 'react-images-uploader/styles.css';
 
 import Logo from './components/Logo/Logo';
 import ImageLink from './components/ImageLink/ImageLink';
 import ImageRecognition from './components/ImageRecognition/ImageRecognition';
+import TextArea from './components/TextArea/TextArea';
 
 import './App.css';
 
@@ -15,6 +17,7 @@ class App extends Component {
 		this.state = {
 			input: '',
 			imageUrl: '',
+			translation: ''
 		}
 	}
 
@@ -26,10 +29,15 @@ class App extends Component {
     	this.setState({input: event.target.value});
   	}
 
-	render() {
-		const { imageUrl } = this.state;
-		console.log(imageUrl);
-		if (imageUrl) {
+	onResize = (event) => {
+	  console.log(event.type); 
+	}
+
+	onTextAreaInput = (event) => {
+		const { imageUrl, translation } = this.state;
+		const textArea = document.getElementById("tArea");
+
+		if (imageUrl && !translation) {
 			fetch('http://localhost:3000/imageurl', {
 				method: 'post',
 				headers: {'Content-Type': 'application/json'},
@@ -38,17 +46,26 @@ class App extends Component {
 				})
 			})
 			.then(response => response.json())
-			.then(console.log)
+			.then(englishTranslation => {
+				this.setState({translation: englishTranslation});
+				textArea.value = englishTranslation;
+			})
 			.catch(err => {
 				console.log(err);
 			})
-		}
+		}		
+	}
+
+	render() {
+		const { imageUrl, translation } = this.state;
 
 		return (
 		  <div className="App">
 		  	<Logo />
-		  	<ImageLink onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>
-		  	<ImageRecognition imageUrl={imageUrl}/>
+		  	<ImageLink 
+		  		onInputChange={this.onInputChange} 
+		  		onButtonSubmit={this.onButtonSubmit}
+		  	/>
 			<ImagesUploader
 				url="http://localhost:3000/uploadedimage"
 				optimisticPreviews
@@ -60,9 +77,16 @@ class App extends Component {
 				}}
 				label="Upload a picture"
 			/>
+
+			<div>
+				<p>Translation</p>
+				<TextArea onTextAreaInput = {this.onTextAreaInput}/> 
+			</div>
+
 		  </div>
 		);
 	}
 }
 
 export default App;
+

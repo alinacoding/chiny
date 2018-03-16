@@ -27,13 +27,13 @@ const handleImageUrl = (req, res) => {
                   console.log(result.text);
                   translate(result.text, {to: 'en'})
                     .then(rez => {
+                      res.json(rez.text);
                       console.log(rez.text);
                       console.log(rez.from.language.iso);
                       })
                     .catch(err => {
                       console.error(err);
                   })
-                  res.json(result.text);
                 })
                 .catch(err => {
                   console.log(err);
