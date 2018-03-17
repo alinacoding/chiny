@@ -17,7 +17,8 @@ class App extends Component {
 		this.state = {
 			input: '',
 			imageUrl: '',
-			translation: ''
+			translation: '',
+			uploadedImagePath: ''
 		}
 	}
 
@@ -29,12 +30,8 @@ class App extends Component {
     	this.setState({input: event.target.value});
   	}
 
-	onResize = (event) => {
-	  console.log(event.type); 
-	}
-
 	onTextAreaInput = (event) => {
-		const { imageUrl, translation } = this.state;
+		const { imageUrl, uploadedImagePath, translation } = this.state;
 		const textArea = document.getElementById("tArea");
 
 		if (imageUrl && !translation) {
@@ -53,7 +50,28 @@ class App extends Component {
 			.catch(err => {
 				console.log(err);
 			})
-		}		
+		}
+
+		if (uploadedImagePath && !translation) {
+			const params = {uploadedImagePath: uploadedImagePath};
+			const url = new URL('http://localhost:3000/uploadedimage/');
+			Object.keys(params)
+				.forEach(key => url.searchParams.append(key, params[key]))
+			fetch(url, {
+				method: 'get',
+				headers: {'Content-Type': 'application/json'},				
+				body: undefined			
+			})
+			.then(response => response.json())
+			.then(englishTranslation => {
+				this.setState({translation: englishTranslation});
+				textArea.value = englishTranslation;
+			})			
+			.catch(err => {
+				console.log(err);
+			})
+		}
+
 	}
 
 	render() {
@@ -70,9 +88,12 @@ class App extends Component {
 				url="http://localhost:3000/uploadedimage"
 				optimisticPreviews
 				multiple={false}
-				onLoadEnd={(err) => {
+				onLoadEnd={(err, imagePath) => {
 					if (err) {
 						console.log(err);
+					}
+					if (imagePath) {
+						this.setState({uploadedImagePath: imagePath});
 					}
 				}}
 				label="Upload a picture"

@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const corsPrefetch = require('cors-prefetch-middleware').default;
 const imagesUpload = require('images-upload-middleware').default;
 const imageurl = require('./controllers/imageurl');
+const uploadedimage = require('./controllers/uploadedimage');
+
 
 const app = express();
 
@@ -20,13 +22,17 @@ app.get('/', (req, res)=> {
 
 app.post('/imageurl', (req, res) => {imageurl.handleImageUrl(req, res)})
 
+app.post('/uploadedimage', 	
+	imagesUpload(
+		'./static/',
+		'http://localhost:3000/static/'
+	)	
+)
 
-app.post('/uploadedimage', imagesUpload(
-    './static/',
-    'http://localhost:3000/static/'
-));
+app.get('/uploadedimage', (req, res) => {uploadedimage.handleImageUpload(req, res)});
 
-const PORT = 3000 ;
+
+const PORT = 3000;
 app.listen(PORT, ()=> {
   console.log(`app is running on port ${PORT}`);
 })
