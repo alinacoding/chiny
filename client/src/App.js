@@ -8,6 +8,7 @@ import Logo from './components/Logo/Logo';
 import ImageLink from './components/ImageLink/ImageLink';
 import ImageRecognition from './components/ImageRecognition/ImageRecognition';
 import TextArea from './components/TextArea/TextArea';
+import SpeechButton from './components/SpeechButton/SpeechButton';
 
 import './App.css';
 
@@ -103,7 +104,7 @@ class App extends Component {
 				<p>Translation</p>
 				<TextArea onTextAreaInput = {this.onTextAreaInput}/> 
 			</div>
-
+			<SpeechButton/>
 		  </div>
 		);
 	}
