@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ImagesUploader from 'react-images-uploader';
+// import googleTTS from 'google-tts-api';
+// import speaker from 'nictalk';
 
 import 'react-images-uploader/font.css';
 import 'react-images-uploader/styles.css';
@@ -11,6 +13,7 @@ import TextArea from './components/TextArea/TextArea';
 import SpeechButton from './components/SpeechButton/SpeechButton';
 
 import './App.css';
+
 
 class App extends Component {
 	constructor() {
@@ -104,7 +107,7 @@ class App extends Component {
 				<p>Translation</p>
 				<TextArea onTextAreaInput = {this.onTextAreaInput}/> 
 			</div>
-			<SpeechButton/>
+			<SpeechButton />
 		  </div>
 		);
 	}

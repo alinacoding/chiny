@@ -1,6 +1,9 @@
 const tesseract = require('tesseract.js');
 const translate = require('google-translate-api');
 const imagesUpload = require('images-upload-middleware').default;
+const nicTalk = require("nictalk");
+ 
+
 
 const handleImageUpload = (req, res) => {
 
@@ -16,6 +19,14 @@ const handleImageUpload = (req, res) => {
 			console.log(err);
 		})
 		.then(function(result) {
+			console.log("Speaking" ,result.text);
+			const chinese = new nicTalk();
+			chinese.setParams({"language" : "zh", "directory" : "./static/"});
+			chinese.speak("chinese", result.text, err => {
+				if (err) {
+					console.log(err);
+				};
+			});
 			console.log(result.text);
 			translate(result.text, {to: 'en'})
 		.then(rez => {

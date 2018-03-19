@@ -17,6 +17,7 @@
     "fs": "0.0.1-security",
     "google-translate-api": "^2.3.0",
     "images-upload-middleware": "^1.1.1",
+    "nictalk": "^0.9.2",
     "path": "^0.12.7",
     "request": "^2.85.0",
     "tesseract.js": "^1.0.10"

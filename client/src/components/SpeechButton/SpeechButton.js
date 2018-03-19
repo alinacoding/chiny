@@ -2,7 +2,7 @@ import React from 'react';
 import './SpeechButton.css';
 
 
-const SpeechButton = () => {
+const SpeechButton = ({}) => {
 	return (
 		<div id="container" className="center">
 			<button className="sb"></button>
