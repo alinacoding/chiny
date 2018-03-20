@@ -5,7 +5,7 @@ const corsPrefetch = require('cors-prefetch-middleware').default;
 const imagesUpload = require('images-upload-middleware').default;
 const imageurl = require('./controllers/imageurl');
 const uploadedimage = require('./controllers/uploadedimage');
-
+const audio = require('./controllers/audio');
 
 const app = express();
 
@@ -30,6 +30,8 @@ app.post('/uploadedimage',
 )
 
 app.get('/uploadedimage', (req, res) => {uploadedimage.handleImageUpload(req, res)});
+
+app.get('/audio', (req, res) => {audio.handleAudio(req, res)});
 
 
 const PORT = 3000;
