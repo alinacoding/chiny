@@ -9,9 +9,6 @@ import ImageRecognition from './components/ImageRecognition/ImageRecognition';
 import TextArea from './components/TextArea/TextArea';
 import ReactPlayer from 'react-player';
 
-// import { PlayButton, PauseButton } from 'react-player-controls';
-// import ReactAudioPlayer from 'react-audio-player';
-
 import './App.css';
 
 class App extends Component {
@@ -30,8 +27,8 @@ class App extends Component {
 	}
 
 	onInputChange = (event) => {
-    	this.setState({input: event.target.value});
-  	}
+		this.setState({input: event.target.value});
+	}
 
 	onTextAreaInput = (event) => {
 		const { imageUrl, uploadedImagePath, translation } = this.state;
